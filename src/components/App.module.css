@@ -1,0 +1,18 @@
+.container {
+  width: 400px;
+  padding: 10px;
+
+  background: rgba(255, 255, 255, 0.507);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+}
+
+.loader {
+  text-align: center;
+}
+
+.error {
+  text-align: center;
+}
