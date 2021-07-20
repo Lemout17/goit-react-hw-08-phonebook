@@ -16,7 +16,7 @@ class ContactsView extends Component {
 
   render() {
     const { isLoading, contactsError, contacts } = this.props;
-    console.log(contacts);
+
     return (
       <main>
         <Section title={"Contacts"}>
@@ -24,7 +24,7 @@ class ContactsView extends Component {
             <Form />
 
             {contacts.length > 0 && <ContactsFilter />}
-            {/* {isLoading ? (
+            {isLoading ? (
               <Loader
                 className={s.loader}
                 type="Rings"
@@ -38,17 +38,6 @@ class ContactsView extends Component {
               </h2>
             ) : (
               <Contacts />
-            )} */}
-            {isLoading ? (
-              <Loader
-                className={s.loader}
-                type="Rings"
-                color="#00BFFF"
-                height={80}
-                width={80}
-              />
-            ) : (
-              contacts.length > 0 && <Contacts />
             )}
           </div>
         </Section>

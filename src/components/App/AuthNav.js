@@ -10,7 +10,7 @@ const AuthNav = () => {
         className={s.nav_link}
         activeClassName={s.nav_link__active}
       >
-        Login
+        Log in
       </NavLink>
       <NavLink
         to={routes.register}

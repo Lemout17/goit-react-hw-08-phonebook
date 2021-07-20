@@ -1,7 +1,9 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import s from "../components/Form/Form.module.css";
 import { authOperations } from "../redux/auth";
+import Button from "react-bootstrap/Button";
+
+import s from "../components/Form/Form.module.css";
 
 class LoginView extends Component {
   state = {
@@ -32,7 +34,7 @@ class LoginView extends Component {
 
     return (
       <div className={s.container}>
-        <h1>Login</h1>
+        <h1>Log in</h1>
         <form className={s.form} onSubmit={this.handleSubmit}>
           <label className={s.label}>
             Email
@@ -55,9 +57,10 @@ class LoginView extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <button className={s.button} type="submit">
+
+          <Button variant="primary" type="submit">
             Log in
-          </button>
+          </Button>
         </form>
       </div>
     );

@@ -5,24 +5,28 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 const Contacts = ({ contacts, onDelete }) => {
   return (
-    <div className={s.container}>
-      <ul className={s.list}>
-        {contacts.map(({ id, name, number }) => (
-          <li className={s.item} key={id}>
-            <span className={s.text}>{name} :</span>
-            <span className={s.text}>{number}</span>
-            <button
-              className={s.button}
-              onClick={() => {
-                onDelete(id);
-              }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {contacts.length > 0 && (
+        <div className={s.container}>
+          <ul className={s.list}>
+            {contacts.map(({ id, name, number }) => (
+              <li className={s.item} key={id}>
+                <span className={s.text}>{name} :</span>
+                <span className={s.text}>{number}</span>
+                <button
+                  className={s.button}
+                  onClick={() => {
+                    onDelete(id);
+                  }}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 };
 

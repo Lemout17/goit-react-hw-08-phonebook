@@ -1,7 +1,9 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import s from "../components/Form/Form.module.css";
 import { authOperations } from "../redux/auth";
+import Button from "react-bootstrap/Button";
+
+import s from "../components/Form/Form.module.css";
 
 class RegisterView extends Component {
   state = {
@@ -68,9 +70,10 @@ class RegisterView extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <button className={s.button} type="submit">
-            Log in
-          </button>
+
+          <Button variant="primary" type="submit">
+            Register
+          </Button>
         </form>
       </div>
     );

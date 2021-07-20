@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
+import Button from "react-bootstrap/Button";
+
 import defaultImage from "../../img/poggers.png";
 import s from "./UserMenu.module.css";
 
@@ -7,10 +9,11 @@ const UserMenu = ({ avatar, name, onLogout }) => {
   return (
     <div className={s.container}>
       <img className={s.img} src={avatar} alt="" />
-      <span>Hi, {name}</span>
-      <button className={s.button} type="button" onClick={onLogout}>
-        Logout
-      </button>
+      <span className={s.text}>Hi, {name}</span>
+
+      <Button variant="danger" type="button" onClick={onLogout}>
+        Log out
+      </Button>
     </div>
   );
 };

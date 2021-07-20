@@ -1,24 +1,14 @@
 import axios from "axios";
-import {
-  fetchContactRequest,
-  fetchContactSuccess,
-  fetchContactError,
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-} from "./contacts-actions";
+import contactsActions from "./contacts-actions";
 
 const fetchContact = () => async (dispatch) => {
-  dispatch(fetchContactRequest());
+  dispatch(contactsActions.fetchContactRequest());
 
   try {
     const { data } = await axios.get("/contacts");
-    dispatch(fetchContactSuccess(data));
+    dispatch(contactsActions.fetchContactSuccess(data));
   } catch (error) {
-    dispatch(fetchContactError(error.message));
+    dispatch(contactsActions.fetchContactError(error.message));
   }
 };
 
@@ -30,24 +20,24 @@ const addContact =
       number,
     };
 
-    dispatch(addContactRequest());
+    dispatch(contactsActions.addContactRequest());
 
     try {
       const { data } = await axios.post("/contacts", contact);
-      dispatch(addContactSuccess(data));
+      dispatch(contactsActions.addContactSuccess(data));
     } catch (error) {
-      dispatch(addContactError(error.message));
+      dispatch(contactsActions.addContactError(error.message));
     }
   };
 
 const deleteContact = (contactId) => async (dispatch) => {
-  dispatch(deleteContactRequest());
+  dispatch(contactsActions.deleteContactRequest());
 
   try {
     await axios.delete(`/contacts/${contactId}`);
-    dispatch(deleteContactSuccess(contactId));
+    dispatch(contactsActions.deleteContactSuccess(contactId));
   } catch (error) {
-    dispatch(deleteContactError(error.message));
+    dispatch(contactsActions.deleteContactError(error.message));
   }
 };
 
