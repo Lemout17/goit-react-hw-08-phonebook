@@ -8,4 +8,5 @@
 
 .nav_link__active {
   color: #fff;
+  text-decoration: underline;
 }

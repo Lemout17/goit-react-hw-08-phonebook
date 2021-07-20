@@ -3,15 +3,24 @@ import authActions from "./auth-actions";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
-const token = {};
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
 const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
 
   try {
-    const response = await axios.post("/users/signup", credentials);
+    const { data } = await axios.post("/users/signup", credentials);
 
-    dispatch(authActions.registerSuccess(response.data));
+    token.set(data.token);
+
+    dispatch(authActions.registerSuccess(data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
   }
@@ -21,16 +30,50 @@ const logIn = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
 
   try {
-    const response = await axios.post("/users/login", credentials);
-    dispatch(authActions.loginSuccess(response.data));
+    const { data } = await axios.post("/users/login", credentials);
+
+    token.set(data.token);
+
+    dispatch(authActions.loginSuccess(data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
 };
 
-const logOut = () => (dispatch) => {};
+const logOut = () => async (dispatch) => {
+  dispatch(authActions.logoutRequest());
 
-const getCurrentUser = () => (dispatch, getState) => {};
+  try {
+    await axios.post("/users/logout");
+
+    token.unset();
+
+    dispatch(authActions.logoutSuccess());
+  } catch ({ message }) {
+    dispatch(authActions.logoutError(message));
+  }
+};
+
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const { data } = await axios.get("/users/current");
+
+    dispatch(authActions.getCurrentUserSuccess(data));
+  } catch ({ message }) {
+    dispatch(authActions.getCurrentUserError(message));
+  }
+};
 
 export default {
   register,

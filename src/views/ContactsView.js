@@ -6,8 +6,8 @@ import Contacts from "../components/Contacts";
 import ContactsFilter from "../components/Contacts/ContactsFilter";
 import Loader from "react-loader-spinner";
 import s from "./ContactsView.module.css";
-import contactsOperations from "../redux/contactsOperations";
-import contactsSelectors from "../redux/contacts-selectors";
+import contactsOperations from "../redux/contacts/contactsOperations";
+import contactsSelectors from "../redux/contacts/contacts-selectors";
 
 class ContactsView extends Component {
   componentDidMount() {
@@ -15,17 +15,16 @@ class ContactsView extends Component {
   }
 
   render() {
-    const { isLoading, contactsError } = this.props;
-
+    const { isLoading, contactsError, contacts } = this.props;
+    console.log(contacts);
     return (
       <main>
         <Section title={"Contacts"}>
           <div className={s.container}>
             <Form />
 
-            <ContactsFilter />
-
-            {isLoading ? (
+            {contacts.length > 0 && <ContactsFilter />}
+            {/* {isLoading ? (
               <Loader
                 className={s.loader}
                 type="Rings"
@@ -39,6 +38,17 @@ class ContactsView extends Component {
               </h2>
             ) : (
               <Contacts />
+            )} */}
+            {isLoading ? (
+              <Loader
+                className={s.loader}
+                type="Rings"
+                color="#00BFFF"
+                height={80}
+                width={80}
+              />
+            ) : (
+              contacts.length > 0 && <Contacts />
             )}
           </div>
         </Section>
@@ -48,6 +58,7 @@ class ContactsView extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  contacts: contactsSelectors.getContacts(state),
   isLoading: contactsSelectors.getLoading(state),
   contactsError: contactsSelectors.getError(state),
 });

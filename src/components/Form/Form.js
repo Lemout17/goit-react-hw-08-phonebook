@@ -1,8 +1,8 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import contactsOperations from "../../redux/contactsOperations";
+import contactsOperations from "../../redux/contacts/contactsOperations";
 import s from "./Form.module.css";
-import contactsSelectors from "../../redux/contacts-selectors";
+import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 class Form extends Component {
   state = {

@@ -1,26 +1,28 @@
 import { connect } from "react-redux";
-import contactsOperations from "../../redux/contactsOperations";
+import contactsOperations from "../../redux/contacts/contactsOperations";
 import s from "./Contacts.module.css";
-import contactsSelectors from "../../redux/contacts-selectors";
+import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 const Contacts = ({ contacts, onDelete }) => {
   return (
-    <ul className={s.list}>
-      {contacts.map(({ id, name, number }) => (
-        <li className={s.item} key={id}>
-          <span className={s.text}>{name} :</span>
-          <span className={s.text}>{number}</span>
-          <button
-            className={s.button}
-            onClick={() => {
-              onDelete(id);
-            }}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className={s.container}>
+      <ul className={s.list}>
+        {contacts.map(({ id, name, number }) => (
+          <li className={s.item} key={id}>
+            <span className={s.text}>{name} :</span>
+            <span className={s.text}>{number}</span>
+            <button
+              className={s.button}
+              onClick={() => {
+                onDelete(id);
+              }}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
 import "modern-normalize/modern-normalize.css";
 import { Component, Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { authOperations } from "../../redux/auth";
 import Container from "../Container";
 import Loader from "react-loader-spinner";
 import routes from "../../routes";
@@ -21,6 +23,10 @@ const RegisterView = lazy(() =>
 );
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getUser();
+  }
+
   render() {
     return (
       <Container>
@@ -49,4 +55,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  getUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);
