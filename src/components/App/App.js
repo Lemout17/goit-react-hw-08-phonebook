@@ -1,13 +1,18 @@
 import "modern-normalize/modern-normalize.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import s from "./App.module.css";
+
 import { Component, Suspense, lazy } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { authOperations } from "../../redux/auth";
-import Container from "../Container";
-import Loader from "react-loader-spinner";
 import routes from "../../routes";
+
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+import Container from "../Container";
 import AppBar from "../App/AppBar";
-import s from "./App.module.css";
+import Loader from "react-loader-spinner";
 
 const HomeView = lazy(() =>
   import("../../views/HomeView" /* webpackChunkName: "home-page" */)
@@ -44,10 +49,24 @@ class App extends Component {
           }
         >
           <Switch>
-            <Route exact path={routes.home} exact component={HomeView} />
-            <Route path={routes.contacts} component={ContactsView} />
-            <Route path={routes.login} component={LoginView} />
-            <Route path={routes.register} component={RegisterView} />
+            <PublicRoute exact path={routes.home} component={HomeView} />
+            <PublicRoute
+              path={routes.register}
+              restricted
+              redirectTo={routes.contacts}
+              component={RegisterView}
+            />
+            <PublicRoute
+              path={routes.login}
+              restricted
+              redirectTo={routes.contacts}
+              component={LoginView}
+            />
+            <PrivateRoute
+              path={routes.contacts}
+              component={ContactsView}
+              redirectTo={routes.login}
+            />
           </Switch>
         </Suspense>
       </Container>

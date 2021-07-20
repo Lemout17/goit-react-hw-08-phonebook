@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
-import defaultImage from "../../img/default.png";
+import defaultImage from "../../img/poggers.png";
 import s from "./UserMenu.module.css";
 
 const UserMenu = ({ avatar, name, onLogout }) => {
