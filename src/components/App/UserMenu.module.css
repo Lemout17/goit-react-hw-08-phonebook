@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.button {
+  padding: 5px 15px;
+  margin-left: 10px;
+
+  font-size: 15px;
+  border: 1px solid grey;
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  transition: box-shadow 250ms linear;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #2196f3;
+}

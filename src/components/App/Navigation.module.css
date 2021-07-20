@@ -1,0 +1,11 @@
+.nav_link {
+  color: rgb(108, 6, 240);
+}
+
+.nav_link:first-child {
+  margin-right: 20px;
+}
+
+.nav_link__active {
+  color: #fff;
+}

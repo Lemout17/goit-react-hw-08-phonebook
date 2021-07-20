@@ -29,17 +29,34 @@
 body {
   font-family: "Roboto";
   font-size: 18px;
+  color: #fff;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
   line-height: 1.2;
 
-  background-image: url(./img/70.jpg);
+  background-image: url(./img/2.jpg);
   background-position: center -100px;
   background-size: cover;
   background-repeat: no-repeat;
   /* background: #f5f4fa; */
 }
 
+h1,
+h2 {
+  margin: 20px auto;
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

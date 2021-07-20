@@ -1,4 +1,5 @@
 import contactsReducer from "./contactsReducer";
+import { authReducers } from "./auth";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 
@@ -22,6 +23,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
+    auth: authReducers,
     contacts: contactsReducer,
   },
   middleware,

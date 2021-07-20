@@ -1,19 +1,21 @@
 import { connect } from "react-redux";
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/contacts-actions";
 import s from "./ContactsFilter.module.css";
 import contactsSelectors from "../../redux/contacts-selectors";
 
 const ContactsFilter = ({ value, onChange }) => {
   return (
-    <label className={s.label}>
-      Filter contacts by name
-      <input
-        className={s.input}
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <form className={s.form}>
+      <label className={s.label}>
+        Filter contacts by name
+        <input
+          className={s.input}
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+      </label>
+    </form>
   );
 };
 const mapStateToProps = (state) => ({
