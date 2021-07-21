@@ -1,8 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { authOperations } from "../redux/auth";
-import Button from "react-bootstrap/Button";
 
+// import Button from "react-bootstrap/Button"
+import { MDBInput } from "mdb-react-ui-kit";
+import { MDBBtn } from "mdb-react-ui-kit";
 import s from "../components/Form/Form.module.css";
 
 class RegisterView extends Component {
@@ -38,7 +40,42 @@ class RegisterView extends Component {
       <div className={s.container}>
         <h1>Register</h1>
         <form className={s.form} onSubmit={this.handleSubmit}>
-          <label className={s.label}>
+          <MDBInput
+            className="text-light"
+            label="Name"
+            id="typeText"
+            contrast
+            autoComplete="off"
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+          />
+
+          <MDBInput
+            className="text-light"
+            label="Email"
+            id="typeEmail"
+            contrast
+            autoComplete="off"
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+
+          <MDBInput
+            className="text-light"
+            label="Password"
+            id="typePassword"
+            contrast
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+
+          {/* <label className={s.label}>
             Name
             <input
               className={s.input}
@@ -69,11 +106,13 @@ class RegisterView extends Component {
               value={password}
               onChange={this.handleChange}
             />
-          </label>
+          </label> */}
 
-          <Button variant="primary" type="submit">
+          <MDBBtn rounded>Register</MDBBtn>
+
+          {/* <Button variant="primary" type="submit">
             Register
-          </Button>
+          </Button> */}
         </form>
       </div>
     );

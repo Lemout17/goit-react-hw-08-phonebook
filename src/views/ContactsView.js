@@ -1,13 +1,16 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+
 import Section from "../components/Section";
 import Form from "../components/Form";
 import Contacts from "../components/Contacts";
 import ContactsFilter from "../components/Contacts/ContactsFilter";
 import Loader from "react-loader-spinner";
-import s from "./ContactsView.module.css";
+
 import contactsOperations from "../redux/contacts/contactsOperations";
 import contactsSelectors from "../redux/contacts/contacts-selectors";
+
+import s from "./ContactsView.module.css";
 
 class ContactsView extends Component {
   componentDidMount() {

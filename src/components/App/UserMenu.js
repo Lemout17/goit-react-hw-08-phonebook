@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
-import Button from "react-bootstrap/Button";
 
 import defaultImage from "../../img/poggers.png";
 import s from "./UserMenu.module.css";
+// import Button from "react-bootstrap/Button"
+import { MDBBtn } from "mdb-react-ui-kit";
 
 const UserMenu = ({ avatar, name, onLogout }) => {
   return (
@@ -11,9 +12,13 @@ const UserMenu = ({ avatar, name, onLogout }) => {
       <img className={s.img} src={avatar} alt="" />
       <span className={s.text}>Hi, {name}</span>
 
-      <Button variant="danger" type="button" onClick={onLogout}>
+      <MDBBtn rounded className="mx-2" color="danger" onClick={onLogout}>
         Log out
-      </Button>
+      </MDBBtn>
+
+      {/* <Button variant="danger" type="button" onClick={onLogout}>
+        Log out
+      </Button> */}
     </div>
   );
 };

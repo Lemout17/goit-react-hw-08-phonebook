@@ -1,9 +1,12 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { authOperations } from "../redux/auth";
-import Button from "react-bootstrap/Button";
+import { MDBInput } from "mdb-react-ui-kit";
+
+// import Button from "react-bootstrap/Button"
 
 import s from "../components/Form/Form.module.css";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 class LoginView extends Component {
   state = {
@@ -35,8 +38,32 @@ class LoginView extends Component {
     return (
       <div className={s.container}>
         <h1>Log in</h1>
+
         <form className={s.form} onSubmit={this.handleSubmit}>
-          <label className={s.label}>
+          <MDBInput
+            className="text-light"
+            label="Email"
+            id="typeEmail"
+            contrast
+            autoComplete="off"
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+
+          <MDBInput
+            className="text-light"
+            label="Password"
+            id="typePassword"
+            contrast
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+
+          {/* <label className={s.label}>
             Email
             <input
               className={s.input}
@@ -45,9 +72,9 @@ class LoginView extends Component {
               value={email}
               onChange={this.handleChange}
             />
-          </label>
+          </label> */}
 
-          <label className={s.label}>
+          {/* <label className={s.label}>
             Password
             <input
               className={s.input}
@@ -56,12 +83,43 @@ class LoginView extends Component {
               value={password}
               onChange={this.handleChange}
             />
-          </label>
+          </label> */}
+
+          <MDBBtn rounded>Log in</MDBBtn>
+
+          {/* <Button variant="primary" type="submit">
+            Log in
+          </Button> */}
+        </form>
+
+        {/* <Form onSubmit={this.handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              autoComplete="off"
+              value={email}
+              onChange={this.handleChange}
+              placeholder="Enter email"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+              placeholder="Password"
+            />
+          </Form.Group>
 
           <Button variant="primary" type="submit">
-            Log in
+            Submit
           </Button>
-        </form>
+        </Form> */}
       </div>
     );
   }

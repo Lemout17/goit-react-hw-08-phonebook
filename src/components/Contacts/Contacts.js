@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
+
 import contactsOperations from "../../redux/contacts/contactsOperations";
-import s from "./Contacts.module.css";
 import contactsSelectors from "../../redux/contacts/contacts-selectors";
+
+import s from "./Contacts.module.css";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 const Contacts = ({ contacts, onDelete }) => {
   return (
@@ -13,14 +16,28 @@ const Contacts = ({ contacts, onDelete }) => {
               <li className={s.item} key={id}>
                 <span className={s.text}>{name} :</span>
                 <span className={s.text}>{number}</span>
-                <button
-                  className={s.button}
+
+                <MDBBtn
+                  outline
+                  rounded
+                  size="sm"
+                  className="mx-2"
+                  color="danger"
                   onClick={() => {
                     onDelete(id);
                   }}
                 >
                   Delete
-                </button>
+                </MDBBtn>
+
+                {/* <button
+                  className={s.button}
+                  onClick={() => {
+                    onDelete(id)
+                  }}
+                >
+                  Delete
+                </button> */}
               </li>
             ))}
           </ul>
