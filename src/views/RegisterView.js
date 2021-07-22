@@ -75,44 +75,7 @@ class RegisterView extends Component {
             onChange={this.handleChange}
           />
 
-          {/* <label className={s.label}>
-            Name
-            <input
-              className={s.input}
-              type="text"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label className={s.label}>
-            Email
-            <input
-              className={s.input}
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            ></input>
-          </label>
-
-          <label className={s.label}>
-            Password
-            <input
-              className={s.input}
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label> */}
-
           <MDBBtn rounded>Register</MDBBtn>
-
-          {/* <Button variant="primary" type="submit">
-            Register
-          </Button> */}
         </form>
       </div>
     );

@@ -6,7 +6,6 @@ import contactsSelectors from "../../redux/contacts/contacts-selectors";
 
 import s from "./Form.module.css";
 import { MDBInput } from "mdb-react-ui-kit";
-import Button from "react-bootstrap/Button";
 import { MDBBtn } from "mdb-react-ui-kit";
 
 class Form extends Component {
@@ -72,40 +71,6 @@ class Form extends Component {
         />
 
         <MDBBtn rounded>Add contact</MDBBtn>
-
-        {/* <Button variant="primary" type="submit">
-          Add contact
-        </Button> */}
-
-        {/* <label className={s.label}>
-          Name
-          <input
-            className={s.input}
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-          />
-        </label> */}
-        {/* <label className={s.label}>
-          Number
-          <input
-            className={s.input}
-            type="tel"
-            name="number"
-            value={number}
-            onChange={this.handleChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-          />
-        </label> */}
-        {/* <button className={s.button} type="submit">
-          Add contact
-        </button> */}
       </form>
     );
   }

@@ -15,10 +15,6 @@ const UserMenu = ({ avatar, name, onLogout }) => {
       <MDBBtn rounded className="mx-2" color="danger" onClick={onLogout}>
         Log out
       </MDBBtn>
-
-      {/* <Button variant="danger" type="button" onClick={onLogout}>
-        Log out
-      </Button> */}
     </div>
   );
 };
