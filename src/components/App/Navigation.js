@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { authSelectors } from "../../redux/auth";
+
 import routes from "../../routes";
+
 import s from "./Navigation.module.css";
 
 const Navigation = ({ isAuth }) => {
